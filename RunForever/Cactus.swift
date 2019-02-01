@@ -12,9 +12,13 @@ import GameplayKit
 
 class Cactus: GameObjects {
 
-    init(speed: CGFloat) {
+    init(speed: CGFloat, frameSize: CGSize) {
         let cactusTexture = SKTexture(imageNamed: "cactus.png")
-        let size = CGSize(width: CGFloat(93.75), height: CGFloat(93.75))
+
+        let cactusWidth = CGFloat(frameSize.width / 15)
+        let cactusHeight = CGFloat(frameSize.height / 10)
+        let size = CGSize(width: cactusWidth, height: cactusHeight)
+//        let size = CGSize(width: CGFloat(93.75), height: CGFloat(93.75))
 
         super.init(texture: cactusTexture, size: size)
 

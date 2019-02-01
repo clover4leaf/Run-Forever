@@ -12,12 +12,20 @@ import GameplayKit
 
 class Hero: GameObjects {
 
-    var heroState = HeroState.run
+    // MARK: - Privates
+    private var heroState = HeroState.run
 
     // MARK: - Initializers
     override init() {
+        super.init()
+    }
+
+    init(frameSize: CGSize) {
         let texture = SKTexture(imageNamed: "run2.png")
-        let size = CGSize(width: CGFloat(187.5), height: CGFloat(150.0))
+
+        let heroWidth = CGFloat(frameSize.width / 9)
+        let heroHeight = CGFloat(frameSize.height / 5.5)
+        let size = CGSize(width: heroWidth, height: heroHeight)
 
         super.init(texture: texture, size: size)
 
@@ -28,6 +36,7 @@ class Hero: GameObjects {
         self.physicsBody?.restitution = 0.0
 
         fallAnimation()
+        // start run animation after first landing
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +62,7 @@ class Hero: GameObjects {
         print("runAnimation")
 
         heroState = .run
-        
+
         let runHeroTexture = SKTexture(imageNamed: "run2.png")
 
         self.physicsBody = SKPhysicsBody(texture: runHeroTexture, size: size)
@@ -77,7 +86,7 @@ class Hero: GameObjects {
 
     func jumpAnimation() {
         print("jumpAnimation")
-        
+
         heroState = .jump
 
         let jump0 = SKTexture(imageNamed: "jump0.png")
@@ -97,7 +106,7 @@ class Hero: GameObjects {
 
     func startSlideAnimation() {
         print("startSlideAnimation")
-        
+
         heroState = .slide
 
         let slideHeroTexture = SKTexture(imageNamed: "slide1")

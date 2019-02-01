@@ -28,8 +28,10 @@ class MainViewController: UIViewController {
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
 
-        if let scene = SKScene(fileNamed: "MenuGameScene") {
+        if let scene = SKScene(fileNamed: "MenuGameScene") as? MenuGameScene {
             scene.scaleMode = .aspectFill
+            scene.size = self.view.frame.size
+
             backgroundScene.presentScene(scene)
         }
     }

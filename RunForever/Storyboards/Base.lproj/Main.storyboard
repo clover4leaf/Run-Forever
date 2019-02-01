@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNJ-KP-9oC">
+                            <skView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNJ-KP-9oC">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </skView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XV0-Vv-dFv">
@@ -52,15 +52,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="sNJ-KP-9oC" firstAttribute="leading" secondItem="esr-j8-Uhe" secondAttribute="leading" id="A9e-vk-P0B"/>
                             <constraint firstItem="XV0-Vv-dFv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d3X-AB-UhB" secondAttribute="bottom" constant="40" id="CeE-yg-XJm"/>
+                            <constraint firstAttribute="trailing" secondItem="sNJ-KP-9oC" secondAttribute="trailing" id="Iee-bY-NbO"/>
+                            <constraint firstAttribute="bottom" secondItem="sNJ-KP-9oC" secondAttribute="bottom" id="Q0U-mc-MDR"/>
+                            <constraint firstItem="sNJ-KP-9oC" firstAttribute="top" secondItem="esr-j8-Uhe" secondAttribute="top" id="TVG-hR-5lI"/>
                             <constraint firstItem="d3X-AB-UhB" firstAttribute="top" secondItem="JXa-nc-rH7" secondAttribute="top" constant="40" id="aXc-5W-oI5"/>
                             <constraint firstItem="JXa-nc-rH7" firstAttribute="bottom" secondItem="XV0-Vv-dFv" secondAttribute="bottom" constant="40" id="hqe-QG-hv5"/>
-                            <constraint firstAttribute="trailing" secondItem="sNJ-KP-9oC" secondAttribute="trailing" id="lAO-8Z-0xz"/>
                             <constraint firstItem="XV0-Vv-dFv" firstAttribute="centerX" secondItem="esr-j8-Uhe" secondAttribute="centerX" id="lrD-A1-kpG"/>
                             <constraint firstItem="d3X-AB-UhB" firstAttribute="centerX" secondItem="esr-j8-Uhe" secondAttribute="centerX" id="rWH-W4-74i"/>
-                            <constraint firstItem="sNJ-KP-9oC" firstAttribute="leading" secondItem="esr-j8-Uhe" secondAttribute="leading" id="uCd-Ln-hCf"/>
-                            <constraint firstAttribute="bottom" secondItem="sNJ-KP-9oC" secondAttribute="bottom" id="yUv-fL-Wl7"/>
-                            <constraint firstItem="sNJ-KP-9oC" firstAttribute="top" secondItem="esr-j8-Uhe" secondAttribute="top" id="ztH-vG-nly"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JXa-nc-rH7"/>
                     </view>
@@ -151,23 +151,17 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="DWF-LO-YoS" firstAttribute="top" secondItem="JlP-Fj-Miz" secondAttribute="top" id="1Mq-lm-f0L"/>
-                                    <constraint firstAttribute="bottom" secondItem="DWF-LO-YoS" secondAttribute="bottom" id="4Jl-C4-NUL"/>
-                                    <constraint firstAttribute="trailing" secondItem="DWF-LO-YoS" secondAttribute="trailing" id="Crw-LM-JYl"/>
-                                    <constraint firstItem="uOE-fq-hJc" firstAttribute="top" secondItem="JlP-Fj-Miz" secondAttribute="top" id="LzW-PK-Dgt"/>
                                     <constraint firstItem="DWF-LO-YoS" firstAttribute="leading" secondItem="uOE-fq-hJc" secondAttribute="trailing" id="XSv-R6-Szu"/>
                                     <constraint firstItem="DWF-LO-YoS" firstAttribute="leading" secondItem="uOE-fq-hJc" secondAttribute="trailing" id="biW-Vp-kit"/>
-                                    <constraint firstAttribute="bottom" secondItem="uOE-fq-hJc" secondAttribute="bottom" id="pXt-BB-ECx"/>
-                                    <constraint firstItem="uOE-fq-hJc" firstAttribute="leading" secondItem="JlP-Fj-Miz" secondAttribute="leading" id="phP-L1-Y8B"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JlP-Fj-Miz" firstAttribute="leading" secondItem="IGx-IX-sI7" secondAttribute="leading" id="0jG-pR-U3c"/>
-                            <constraint firstItem="IGx-IX-sI7" firstAttribute="trailing" secondItem="JlP-Fj-Miz" secondAttribute="trailing" id="SZG-gO-dcw"/>
-                            <constraint firstItem="JlP-Fj-Miz" firstAttribute="top" secondItem="IGx-IX-sI7" secondAttribute="top" id="kn8-Xw-cDm"/>
-                            <constraint firstItem="IGx-IX-sI7" firstAttribute="bottom" secondItem="JlP-Fj-Miz" secondAttribute="bottom" id="wV2-EI-4iu"/>
+                            <constraint firstItem="JlP-Fj-Miz" firstAttribute="top" secondItem="F4e-d3-M7e" secondAttribute="top" id="Bo7-hM-BkF"/>
+                            <constraint firstAttribute="trailing" secondItem="JlP-Fj-Miz" secondAttribute="trailing" id="Kjc-BJ-gVU"/>
+                            <constraint firstAttribute="bottom" secondItem="JlP-Fj-Miz" secondAttribute="bottom" id="Te9-BA-xzJ"/>
+                            <constraint firstItem="JlP-Fj-Miz" firstAttribute="leading" secondItem="F4e-d3-M7e" secondAttribute="leading" id="sHs-I1-BJM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IGx-IX-sI7"/>
                     </view>

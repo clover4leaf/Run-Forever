@@ -91,21 +91,22 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         playMusic()
     }
 
+    // enable IT
     private func playMusic() {
-        musicPlayer = AVAudioPlayer()
-
-        if let musicPath = Bundle.main.url(forResource: "music", withExtension: "mp3") {
-            do {
-                musicPlayer = try AVAudioPlayer(contentsOf: musicPath, fileTypeHint: nil)
-                musicPlayer.play()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
+//        musicPlayer = AVAudioPlayer()
+//
+//        if let musicPath = Bundle.main.url(forResource: "music", withExtension: "mp3") {
+//            do {
+//                musicPlayer = try AVAudioPlayer(contentsOf: musicPath, fileTypeHint: nil)
+//                musicPlayer.play()
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 
     private func createBackground() {
-        let background = Background(frameSize: frame.size)
+        let background = Background(frameSize: self.frame.size)
 
         let backgroundNode = SKNode()
         backgroundNode.addChild(background)
@@ -140,7 +141,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func createHero() {
-        hero = Hero()
+        hero = Hero(frameSize: self.frame.size)
 
         let heroNode = SKNode()
         heroNode.name = "hero"
@@ -179,21 +180,22 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
 
     private func randomEnemyType() -> EnemyType {
         let randomNumber = Int.random(in: 0...1)
-        return randomNumber == EnemyType.cactus.rawValue ? EnemyType.cactus : EnemyType.bird
+//        return randomNumber == EnemyType.cactus.rawValue ? EnemyType.cactus : EnemyType.bird
+        return EnemyType.cactus
     }
 
     private func createBird(count: Int) {
         let speed = speedCalcutor()
 
         for index in 0..<count {
-            let bird = Bird(speed: speed)
+            let bird = Bird(speed: speed, frameSize: self.frame.size)
 
             let birdNode = SKNode()
             birdNode.name = "bird"
             birdNode.addChild(bird)
 
-            let xPosition = self.frame.size.width/2 + (CGFloat(index) * bird.frame.size.width + 5)
-            let yPosition = CGFloat(-200)
+            let xPosition = self.frame.size.width / 2 + (CGFloat(index) * bird.frame.size.width + 5)
+            let yPosition = CGFloat(-self.frame.size.height / 3.3)
 
             birdNode.position = CGPoint(x: xPosition, y: yPosition)
 
@@ -205,14 +207,14 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         let speed = speedCalcutor()
 
         for index in 0..<count {
-            let cactus = Cactus(speed: speed)
+            let cactus = Cactus(speed: speed, frameSize: self.frame.size)
 
             let cactusNode = SKNode()
             cactusNode.name = "cactus"
             cactusNode.addChild(cactus)
 
             let xPosition = self.frame.size.width/2 + (CGFloat(index) * cactus.frame.size.width + 5)
-            let yPosition = CGFloat(-300)
+            let yPosition = CGFloat(-self.frame.size.height / 2)
 
             cactusNode.position = CGPoint(x: xPosition, y: yPosition)
 
@@ -224,7 +226,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         scoreTimer.invalidate()
         enemyTimer.invalidate()
         gameState = .pause
-        musicPlayer.pause()
+//        musicPlayer.pause()
     }
 
     private func resumeGame() {
@@ -321,7 +323,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
     private func jumpAction() {
         if onGround {
             hero.physicsBody?.velocity = CGVector.zero
-            hero.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 80.0))
+            hero.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 10.0))
         }
     }
 

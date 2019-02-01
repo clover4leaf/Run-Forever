@@ -13,6 +13,7 @@ class Helper {
     class func currentVC() -> UIViewController {
         if let navVC = UIApplication.shared.delegate?.window??.rootViewController as? UINavigationController,
             let currentVC = navVC.visibleViewController {
+
             return currentVC
         }
 

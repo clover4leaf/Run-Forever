@@ -12,9 +12,12 @@ import GameplayKit
 
 class Bird: GameObjects {
 
-    init(speed: CGFloat) {
+    init(speed: CGFloat, frameSize: CGSize) {
         let birdTexture = SKTexture(imageNamed: "bird4.png")
-        let size = CGSize(width: CGFloat(93.75), height: CGFloat(93.75))
+
+        let birdWidth = CGFloat(frameSize.width / 15)
+        let birdHeight = CGFloat(frameSize.height / 10)
+        let size = CGSize(width: birdWidth, height: birdHeight)
 
         super.init(texture: birdTexture, size: size)
 

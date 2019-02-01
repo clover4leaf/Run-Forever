@@ -39,8 +39,9 @@ class GameViewController: UIViewController {
                 if let game = scene as? MainGameScene {
                     gameScene = game
                 }
-                view.showsPhysics = true
 
+                scene.size = self.view.frame.size
+                view.showsPhysics = true
                 view.presentScene(scene)
             }
         }

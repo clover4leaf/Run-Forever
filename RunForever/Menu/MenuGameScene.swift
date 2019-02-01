@@ -11,13 +11,15 @@ import GameplayKit
 
 class MenuGameScene: SKScene {
 
+    var frameSize = CGSize()
+
     override func didMove(to view: SKView) {
         createBackground()
     }
 
     // MARK: - Private methods
     private func createBackground() {
-        let background = Background(frameSize: frame.size)
+        let background = Background(frameSize: self.frame.size)
 
         let backgroundNode = SKNode()
         backgroundNode.addChild(background)
