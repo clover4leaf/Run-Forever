@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class MainViewController: UIViewController {
+class MenuViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var scoreLabel: UILabel!

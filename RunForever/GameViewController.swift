@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
                 }
 
                 scene.size = self.view.frame.size
-                view.showsPhysics = true
+//                view.showsPhysics = true
                 view.presentScene(scene)
             }
         }
@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
 
         if let scoreVC = storyBoard.instantiateViewController(withIdentifier: "scoreScreen") as? ScoreViewController {
             scoreVC.score = score
-            scoreVC.gameScene = gameScene
+            scoreVC.gameScene = self.gameScene
             self.addChild(scoreVC)
             self.view.addSubview(scoreVC.view)
             scoreVC.didMove(toParent: self)

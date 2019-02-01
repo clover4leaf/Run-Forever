@@ -18,6 +18,7 @@ class FirstPlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.bringSubviewToFront(self.view)
         self.view.backgroundColor = UIColor.clear
 
         UIView.animate(withDuration: 2.0, animations: {

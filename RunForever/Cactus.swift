@@ -15,10 +15,9 @@ class Cactus: GameObjects {
     init(speed: CGFloat, frameSize: CGSize) {
         let cactusTexture = SKTexture(imageNamed: "cactus.png")
 
-        let cactusWidth = CGFloat(frameSize.width / 15)
-        let cactusHeight = CGFloat(frameSize.height / 10)
+        let cactusWidth = CGFloat(frameSize.width / 14)
+        let cactusHeight = CGFloat(frameSize.height / 9)
         let size = CGSize(width: cactusWidth, height: cactusHeight)
-//        let size = CGSize(width: CGFloat(93.75), height: CGFloat(93.75))
 
         super.init(texture: cactusTexture, size: size)
 

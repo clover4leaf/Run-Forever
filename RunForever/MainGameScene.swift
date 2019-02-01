@@ -128,11 +128,11 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
     private func createScoreLabel() {
         scoreLabel = SKLabelNode(fontNamed: "Helvetica Neue Condensed Bold")
         scoreLabel.text = "SCORE: 0"
-        scoreLabel.fontSize = 65
+        scoreLabel.fontSize = self.frame.size.width / 15
         scoreLabel.fontColor = SKColor.black
 
         let xPosition = self.frame.midX
-        let yPosition = self.frame.size.height/2 - 100
+        let yPosition = self.frame.size.height/3
 
         scoreLabel.position = CGPoint(x: xPosition, y: yPosition)
         scoreLabel.zPosition = 10
@@ -180,8 +180,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
 
     private func randomEnemyType() -> EnemyType {
         let randomNumber = Int.random(in: 0...1)
-//        return randomNumber == EnemyType.cactus.rawValue ? EnemyType.cactus : EnemyType.bird
-        return EnemyType.cactus
+        return randomNumber == EnemyType.cactus.rawValue ? EnemyType.cactus : EnemyType.bird
     }
 
     private func createBird(count: Int) {
@@ -213,8 +212,8 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
             cactusNode.name = "cactus"
             cactusNode.addChild(cactus)
 
-            let xPosition = self.frame.size.width/2 + (CGFloat(index) * cactus.frame.size.width + 5)
-            let yPosition = CGFloat(-self.frame.size.height / 2)
+            let xPosition = self.frame.size.width / 2 + (CGFloat(index) * cactus.frame.size.width + 5)
+            let yPosition = CGFloat(-self.frame.size.height / 2.5)
 
             cactusNode.position = CGPoint(x: xPosition, y: yPosition)
 
@@ -233,7 +232,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         createScoreTimer()
         createEnemyObjects()
         gameState = .play
-        musicPlayer.play()
+//        musicPlayer.play()
     }
 
     private func createScoreTimer() {
@@ -260,7 +259,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     private func speedCalcutor() -> CGFloat {
-        let speed = CGFloat(500 + score)
+        let speed = CGFloat(300 + score / 2)
         return speed
     }
 
@@ -268,8 +267,8 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         if UserDefaults.standard.value(forKey: "firstPlay") != nil {
             return
         } else {
-            if let scoreVC = Helper.currentVC() as? GameViewController {
-                scoreVC.showHints()
+            if let gameVC = Helper.currentVC() as? GameViewController {
+                gameVC.showHints()
             }
 
             UserDefaults.standard.set(true, forKey: "firstPlay")
