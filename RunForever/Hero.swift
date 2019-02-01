@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 import GameplayKit
 
+enum HeroState {
+    case run
+    case slide
+    case jump
+}
+
 class Hero: GameObjects {
 
     // MARK: - Privates
@@ -53,9 +59,7 @@ class Hero: GameObjects {
         let fallAnimation = SKAction.animate(with: fallTextureArray, timePerFrame: 0.1)
         let fallAction = SKAction.repeatForever(fallAnimation)
 
-        self.run(fallAction) {
-            self.runAnimation()
-        }
+        self.run(fallAction)
     }
 
     func runAnimation() {

@@ -16,12 +16,6 @@ enum GameState {
     case lose
 }
 
-enum HeroState {
-    case run
-    case slide
-    case jump
-}
-
 enum EnemyType: Int {
     case cactus = 0
     case bird = 1
@@ -37,14 +31,15 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     // MARK: - Privates
+    private var gameState = GameState.play
+    private var finishFalling = false
+
+    private var hero = Hero()
+    private var onGround = false
     private var score = Int()
-    private var musicPlayer = AVAudioPlayer()
     private var scoreTimer = Timer()
     private var enemyTimer = Timer()
-    private var hero = Hero()
-    private var heroState = HeroState.run
-    private var onGround = false
-    private var gameState = GameState.play
+    private var musicPlayer = AVAudioPlayer()
 
     // MARK: - Nodes
     private var scoreLabel = SKLabelNode()
@@ -91,18 +86,17 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         playMusic()
     }
 
-    // enable IT
     private func playMusic() {
-//        musicPlayer = AVAudioPlayer()
-//
-//        if let musicPath = Bundle.main.url(forResource: "music", withExtension: "mp3") {
-//            do {
-//                musicPlayer = try AVAudioPlayer(contentsOf: musicPath, fileTypeHint: nil)
-//                musicPlayer.play()
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }
+        musicPlayer = AVAudioPlayer()
+
+        if let musicPath = Bundle.main.url(forResource: "music", withExtension: "mp3") {
+            do {
+                musicPlayer = try AVAudioPlayer(contentsOf: musicPath, fileTypeHint: nil)
+                musicPlayer.play()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 
     private func createBackground() {
@@ -225,14 +219,14 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         scoreTimer.invalidate()
         enemyTimer.invalidate()
         gameState = .pause
-//        musicPlayer.pause()
+        musicPlayer.pause()
     }
 
     private func resumeGame() {
         createScoreTimer()
         createEnemyObjects()
         gameState = .play
-//        musicPlayer.play()
+        musicPlayer.play()
     }
 
     private func createScoreTimer() {
@@ -245,6 +239,7 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
     private func endGame() {
         if gameState == .lose { return }
 
+        finishFalling = false
         scoreTimer.invalidate()
         enemyTimer.invalidate()
 
@@ -286,11 +281,17 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
         let birdBitMask = GameObjects.birdBitMask
         let groundBitMask = GameObjects.groundBitMask
 
+        print(onGround)
+
         if ((bodyA == heroBitMask && bodyB == cactusBitMask) || (bodyA == cactusBitMask && bodyB == heroBitMask)) {
             endGame()
         } else if ((bodyA == heroBitMask && bodyB == birdBitMask) || (bodyA == birdBitMask && bodyB == heroBitMask)) {
             endGame()
         } else if ((bodyA == heroBitMask && bodyB == groundBitMask) || (bodyA == groundBitMask && bodyB == heroBitMask)) {
+            if !finishFalling {
+                finishFalling = true
+                hero.runAnimation()
+            }
             onGround = true
         }
     }
@@ -308,12 +309,10 @@ class MainGameScene: SKScene, SKPhysicsContactDelegate {
             if onGround {
                 if screenSide.isLess(than: CGFloat(0.0)) {
                     hero.startSlideAnimation()
-                    heroState = .slide
                 } else {
                     hero.jumpAnimation()
                     jumpAction()
                     onGround = false
-                    heroState = .jump
                 }
             }
         }
