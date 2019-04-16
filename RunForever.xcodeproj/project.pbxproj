@@ -81,6 +81,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7C50E853226678100046EE89 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C6D67C721E5F14800AF10F9 /* MainViewController.swift */,
+				7C34818621EC9B78009FED3F /* FirstPlayViewController.swift */,
+				7CC2B9DD21E52E8B0033E7B4 /* GameViewController.swift */,
+				7CC67CF921E5F79800D274D5 /* PauseViewController.swift */,
+				7CC67CFB21E6349500D274D5 /* ScoreViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7C50E854226678D60046EE89 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CC2B9C721E4B3E20033E7B4 /* Assets.xcassets */,
+				7CC2B9BA21E4B3E10033E7B4 /* AppDelegate.swift */,
+				7CC67D0321E64E3000D274D5 /* music.mp3 */,
+				7CC2B9CC21E4B3E20033E7B4 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		7C5BDFC821E7C9F800A36181 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,19 +133,12 @@
 		7CC2B9B921E4B3E10033E7B4 /* RunForever */ = {
 			isa = PBXGroup;
 			children = (
-				7C6D67C721E5F14800AF10F9 /* MainViewController.swift */,
-				7C34818621EC9B78009FED3F /* FirstPlayViewController.swift */,
-				7CC2B9DD21E52E8B0033E7B4 /* GameViewController.swift */,
-				7CC67CF921E5F79800D274D5 /* PauseViewController.swift */,
-				7CC67CFB21E6349500D274D5 /* ScoreViewController.swift */,
+				7C50E853226678100046EE89 /* View Controllers */,
 				7CC67D0621E6587000D274D5 /* Game Objects */,
 				7CC2B9D821E52E000033E7B4 /* Game Scenes */,
 				7CC2B9DC21E52E300033E7B4 /* Storyboards */,
 				7C5BDFC821E7C9F800A36181 /* Helper */,
-				7CC2B9C721E4B3E20033E7B4 /* Assets.xcassets */,
-				7CC2B9BA21E4B3E10033E7B4 /* AppDelegate.swift */,
-				7CC67D0321E64E3000D274D5 /* music.mp3 */,
-				7CC2B9CC21E4B3E20033E7B4 /* Info.plist */,
+				7C50E854226678D60046EE89 /* Supporting Files */,
 			);
 			path = RunForever;
 			sourceTree = "<group>";
@@ -133,7 +149,7 @@
 				7CC2B9D921E52E160033E7B4 /* Menu */,
 				7CC2B9DA21E52E1B0033E7B4 /* Game */,
 			);
-			name = "Game Scenes";
+			path = "Game Scenes";
 			sourceTree = "<group>";
 		};
 		7CC2B9D921E52E160033E7B4 /* Menu */ = {
@@ -151,7 +167,7 @@
 				7CC2B9C021E4B3E10033E7B4 /* MainGameScene.swift */,
 				7CC2B9BC21E4B3E10033E7B4 /* MainGameScene.sks */,
 			);
-			name = Game;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		7CC2B9DC21E52E300033E7B4 /* Storyboards */ = {
@@ -173,7 +189,7 @@
 				7CD61AED21E7934300B732E3 /* Ground.swift */,
 				7CC67D0D21E6598C00D274D5 /* Background.swift */,
 			);
-			name = "Game Objects";
+			path = "Game Objects";
 			sourceTree = "<group>";
 		};
 		B6913177D6A0EC7ED259673B /* Frameworks */ = {
@@ -464,7 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7V52B5879P;
-				INFOPLIST_FILE = RunForever/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RunForever/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -484,7 +500,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7V52B5879P;
-				INFOPLIST_FILE = RunForever/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RunForever/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
